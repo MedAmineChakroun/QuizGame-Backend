@@ -32,7 +32,7 @@ public class Partie {
     @JoinColumn(name = "idPlayer")
     private Player player;
 
-
+    //test1
 	public Partie(Categorie categorie, Player player) {
 		super();
 		this.categorie = categorie;
