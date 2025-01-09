@@ -3,13 +3,13 @@ package com.quiz.whiz.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.quiz.whiz.entities.HintType.*;
 
 @Entity
 @Data
@@ -32,6 +32,8 @@ public class Partie {
     @JoinColumn(name = "idPlayer")
     private Player player;
 
+    @OneToMany(mappedBy = "partie", cascade = CascadeType.ALL)
+    private List<Hint> hints;
     //test1
 	public Partie(Categorie categorie, Player player) {
 		super();
@@ -39,12 +41,20 @@ public class Partie {
 		this.player = player;
 		this.questionReached = 1;
 		this.nbHeart = 3;
+        this.hints = new ArrayList<>();
+        this.hints.add(new Hint(this, ELIMINATE_TWO_OPTIONS));
+        this.hints.add(new Hint(this, SHOW_CORRECT_ANSWER));
+        this.hints.add(new Hint(this, ADD_MORE_TIME));
 
 	}
 
 	public Partie(){
         this.questionReached = 1;
         this.nbHeart = 3;
+        this.hints = new ArrayList<>();
+        this.hints.add(new Hint(this, ELIMINATE_TWO_OPTIONS));
+        this.hints.add(new Hint(this, SHOW_CORRECT_ANSWER));
+        this.hints.add(new Hint(this, ADD_MORE_TIME));
     }
 
 

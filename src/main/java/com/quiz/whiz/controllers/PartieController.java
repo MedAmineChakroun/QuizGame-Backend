@@ -66,11 +66,7 @@ public class PartieController {
         newPartie.setPlayer(player);
         newPartie.setCategorie(categorie);
 
-        //List<Hint> defaultHints = new ArrayList<>();
-        //defaultHints.add(new Hint(newPartie,ELIMINATE_TWO_OPTIONS));
-        //defaultHints.add(new Hint(newPartie,SHOW_CORRECT_ANSWER));
-        //defaultHints.add(new Hint(newPartie,ADD_MORE_TIME));
-        //newPartie.setHints(defaultHints);
+
 
         Partie savedPartie = partieRepository.save(newPartie);
 

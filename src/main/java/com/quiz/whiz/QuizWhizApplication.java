@@ -2,6 +2,7 @@ package com.quiz.whiz;
 
 import java.util.Date;
 
+import com.quiz.whiz.entities.Partie;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,5 +20,6 @@ public class QuizWhizApplication {
 	}
 	 public void run(String... args) throws Exception { 
 	  System.out.println("game started successfully!");
+
 	 } 
 }

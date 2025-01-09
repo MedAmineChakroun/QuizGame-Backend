@@ -3,7 +3,9 @@ package com.quiz.whiz.entities;
 import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +35,12 @@ public class Categorie {
     private Collection<Partie> parties;
 
     @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
-
+    @JsonIgnore
     private Collection<Question> questions;
+
+    @JsonProperty("questionsCount")
+    public int getQuestionsCount() {
+        return questions != null ? questions.size() : 0;
+    }
 
 }
